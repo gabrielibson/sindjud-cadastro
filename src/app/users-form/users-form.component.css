@@ -17,11 +17,19 @@
   }
 
   mat-card {
-    max-width: 50%;
+    max-width: 60%;
     margin: 2em auto;
     text-align: left;
   }
 
   mat-form-field {
-    width: 60%;
+    width: 80%;
+  }
+
+  mat-card-title{
+    font-weight: bold;
+  }
+
+  mat-card-content{
+    margin: 0 8px;
   }

@@ -7,12 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersFormComponent implements OnInit {
 
-  public mask = [/^[0-9]/,/\d/,'/',/[0-9]/,/\d/,'/',/[0-9]/,/\d/,/\d/,/\d$/]
+  public dateMask = [/^[0-9]/,/\d/,'/',/[0-9]/,/\d/,'/',/[0-9]/,/\d/,/\d/,/\d$/]
+  public phoneMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
   /* '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/ */
   options = [
     {value: 'M', viewValue: 'Masculino'},
     {value: 'F', viewValue: 'Feminino'}
   ];
+
+  showme = true
+  next = false
+  showDadosPessoais(){
+    this.showme = true;
+    this.next = false;
+  }
+
+  showDadosFuncionais(){
+    this.showme = false;
+    this.next = true;
+  }
 
   onSubmit(form){
     console.log(form);

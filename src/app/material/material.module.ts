@@ -8,6 +8,7 @@ import {
   MatCardModule,
   MatInputModule,
   MatSelectModule,
+  MatRadioModule,
   MatFormFieldModule
 } from '@angular/material';
 
@@ -20,6 +21,7 @@ import {
     MatCardModule,
     MatInputModule,
     MatSelectModule,
+    MatRadioModule,
     MatFormFieldModule
   ],
   exports: [
@@ -30,6 +32,7 @@ import {
     MatCardModule,
     MatInputModule,
     MatSelectModule,
+    MatRadioModule,
     MatFormFieldModule
   ]
 })
