@@ -7,25 +7,25 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field>
-          <input matInput maxlength="10" placeholder="Nome">
+          <input matInput maxlength="100" placeholder="Nome" [(ngModel)]="person.nome" required #ctrl="ngModel" name="nome">
         </mat-form-field>
         <mat-form-field>
-          <input matInput class="example-right-align" placeholder="Email institucional">
+          <input matInput class="example-right-align" placeholder="Email institucional" [(ngModel)]="person.emailPrincipal" required #ctrl="ngModel" name="emailPrincipal">
           <span matSuffix>@tjpe.jus.br</span>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Email secundário">
+          <input matInput placeholder="Email secundário" [(ngModel)]="person.emailSecundario" required #ctrl="ngModel" name="emailSecundario">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Data de Nascimento" [textMask]="{mask: dateMask}">
+          <input matInput placeholder="Data de Nascimento" [textMask]="{mask: dateMask}" [(ngModel)]="person.dataNascimento" required #ctrl="ngModel" name="dataNascimento">
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Sexo" [(ngModel)]="sexo" name="sexo">
+          <mat-select placeholder="Sexo" [(ngModel)]="person.sexo" name="sexo" [(ngModel)]="sexo" required #ctrl="ngModel" name="sexo">
             <mat-option *ngFor="let sexo of options" [value]="sexo.value">{{sexo.viewValue}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Telefone" [textMask]="{mask: phoneMask}">
+          <input matInput placeholder="Telefone" [textMask]="{mask: phoneMask}" [(ngModel)]="person.telefone" required #ctrl="ngModel" name="telefone">
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
@@ -40,30 +40,30 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field>
-          <input matInput maxlength="10" placeholder="Cargo">
+          <input matInput maxlength="10" placeholder="Cargo" [(ngModel)]="person.cargo" required #ctrl="ngModel" name="cargo">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Lotação Atual">
+          <input matInput placeholder="Lotação Atual" [(ngModel)]="person.lotacao" required #ctrl="ngModel" name="lotacao">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Função">
+          <input matInput placeholder="Função" [(ngModel)]="person.funcao" required #ctrl="ngModel" name="funcao">
         </mat-form-field>
         <div style="margin-top:10px; margin-bottom:10px">
           <label for="filicaoId">Já é afiliadao ao SINDJUD?</label>
           <div id="filicaoId" style="margin-top:10px">
-            <mat-radio-group>
-              <mat-radio-button value="1">Sim</mat-radio-button>
+            <mat-radio-group [(ngModel)]="person.afiliado" required #ctrl="ngModel" name="filiado">
+              <mat-radio-button value="1" >Sim</mat-radio-button>
               <mat-radio-button value="2">Não</mat-radio-button>
             </mat-radio-group>
           </div>
         </div>
         <mat-form-field>
-          <input matInput placeholder="Endereço">
+          <input matInput placeholder="Endereço" [(ngModel)]="person.endereco" required #ctrl="ngModel" name="endereco">
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button (click)="showDadosPessoais()">Voltar</button>
-        <button mat-button>Enviar</button>
+        <button mat-button type="">Enviar</button>
       </mat-card-actions>
     </mat-card>
   </form>

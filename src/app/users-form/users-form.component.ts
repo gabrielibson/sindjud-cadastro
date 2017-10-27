@@ -1,3 +1,4 @@
+import { Person } from './../person';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users-form.component.css']
 })
 export class UsersFormComponent implements OnInit {
+
+  person: Person;
+
+  constructor() {
+    this.person = new Person();
+  }
 
   public dateMask = [/^[0-9]/,/\d/,'/',/[0-9]/,/\d/,'/',/[0-9]/,/\d/,/\d/,/\d$/]
   public phoneMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -30,8 +37,6 @@ export class UsersFormComponent implements OnInit {
   onSubmit(form){
     console.log(form);
   }
-
-  constructor() { }
 
   ngOnInit() {
   }
