@@ -33,3 +33,9 @@
   mat-card-content{
     margin: 0 8px;
   }
+
+  .error{
+    padding: 12px;
+    background-color: rgba(255, 0, 0, 0.2);
+    color: red;
+  }

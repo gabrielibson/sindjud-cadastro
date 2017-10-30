@@ -7,8 +7,12 @@
       </mat-card-header>
       <mat-card-content>
         <mat-form-field>
-          <input matInput maxlength="100" placeholder="Nome" [(ngModel)]="person.nome" required #ctrl="ngModel" name="nome">
+          <input matInput maxlength="100" placeholder="Nome" name="nome" [(ngModel)]="person.nome" required
+          #name="ngModel">
         </mat-form-field>
+        <div [hidden]="name.untouched || (name.valid || name.pristine)" class="error">
+          Name is required my good sir/lady!
+        </div>
         <mat-form-field>
           <input matInput class="example-right-align" placeholder="Email institucional" [(ngModel)]="person.emailPrincipal" required #ctrl="ngModel" name="emailPrincipal">
           <span matSuffix>@tjpe.jus.br</span>
