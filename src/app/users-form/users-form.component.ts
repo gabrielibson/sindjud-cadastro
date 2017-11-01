@@ -1,3 +1,4 @@
+import { UsersService } from './../users.service';
 import { Person } from './../person';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class UsersFormComponent implements OnInit {
 
   person: Person;
+  people: Person[] = [];
 
-  constructor() {
+  constructor(private usersService: UsersService) {
     this.person = new Person();
+  }
+
+  ngOnInit() {
+    this.usersService
+    .getAll()
+    .subscribe(p => this.people = p);
+  }
+
+  savePerson(){
+    this.usersService.save(this.person).subscribe(r => console.log(`saved!!! ${JSON.stringify(this.person)}`));
   }
 
   public dateMask = [/^[0-9]/,/\d/,'/',/[0-9]/,/\d/,'/',/[0-9]/,/\d/,/\d/,/\d$/]
@@ -36,9 +48,6 @@ export class UsersFormComponent implements OnInit {
 
   onSubmit(form){
     console.log(form);
-  }
-
-  ngOnInit() {
   }
 
 }

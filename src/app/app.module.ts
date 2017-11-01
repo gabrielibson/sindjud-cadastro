@@ -1,7 +1,10 @@
+import { UsersService } from './users.service';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,9 +25,11 @@ import { TextMaskModule } from 'angular2-text-mask';
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    TextMaskModule
+    TextMaskModule,
+    FlexLayoutModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
