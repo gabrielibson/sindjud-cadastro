@@ -1,16 +1,26 @@
+import { Endereco } from "./endereco";
 export class Person {
     id: number;
     nome: string;
-    emailPrincipal: string;
-    emailSecundario: string;
+    rg: string;
+    cpf: string;
+    emailInstitucional: string;
+    emailPessoal: string;
     sexo: string;
     telefone: string;
     dataNascimento: string;
     funcao: string;
     cargo: string;
     lotacao: string;
-    endereco: string;
-    afiliado: string;
+    afiliado: number;
+    endereco: Endereco;
+    matricula: string;
+    celular1: string;
+    celuar2: string;
+    comarca: string;
+    envio: boolean;
     
-/*     constructor(){} */
+    constructor(){
+      this.endereco = new Endereco();
+    }
 }

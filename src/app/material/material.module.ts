@@ -9,6 +9,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatRadioModule,
+  MatCheckboxModule,
   MatFormFieldModule
 } from '@angular/material';
 
@@ -22,6 +23,7 @@ import {
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatCheckboxModule,
     MatFormFieldModule
   ],
   exports: [
@@ -33,6 +35,7 @@ import {
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatCheckboxModule,
     MatFormFieldModule
   ]
 })

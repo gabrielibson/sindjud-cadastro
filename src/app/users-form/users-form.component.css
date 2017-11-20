@@ -1,58 +1,115 @@
 .example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
-  
-  .example-right-align {
-    text-align: right;
-  }
-  
-  input.example-right-align::-webkit-outer-spin-button,
-  input.example-right-align::-webkit-inner-spin-button {
-    display: none;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-  @media(max-width:959px){
-    mat-card {
-      max-width: 80%;
-      margin: 2em auto;
-      text-align: left;
-    }  
-  }
-  @media(min-width: 960px){
-    mat-card {
-      max-width: 40%;
-      margin: 2em auto;
-      text-align: left;
-    }
-  }  
+.example-container > * {
+  width: 100%;
+}
 
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+@media(max-width:959px){
   mat-card {
+    max-width: 80%;
+    margin: 2em auto;
+    text-align: left;
+  }  
+}
+@media(min-width: 960px){
+  mat-card {
+    max-width: 40%;
     margin: 2em auto;
     text-align: left;
   }
+}  
 
-  mat-form-field {
-    width: 100%;
-  }
+mat-card {
+  margin: 2em auto;
+  text-align: left;
+}
 
-  mat-card-title{
-    font-weight: bold;
-  }
+.radio-label{
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: normal;
+  vertical-align: middle;
+  padding: 5px;
+}
 
-  mat-card-content{
-    margin: 0 8px;
-  }
+.checkbox-label{
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: normal;
+  vertical-align: middle;
+  padding: 5px;
+}
 
-  .error{
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background-color: #ebccd1;
-    color: #a94442;
-  }
+.dadosPessoais mat-form-field {
+  width: 100%;
+}
+
+mat-card-title{
+  font-weight: bold;
+}
+
+mat-card-content{
+  margin: 0 8px;
+}
+
+mat-form-field .address{
+  position: relative;
+}
+
+.error{
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #ebccd1;
+  color: #a94442;
+}
+
+.actionsPessoais{
+  flex-direction: row; 
+  box-sizing: border-box; 
+  display: flex; 
+  max-height: 100%; 
+  align-content: center; 
+  align-items: center; 
+  justify-content: flex-end;
+}
+
+.actionsFuncionais{
+  flex-direction: row; 
+  box-sizing: border-box; 
+  display: flex; 
+  max-height: 100%; 
+  align-content: center; 
+  align-items: center; 
+  justify-content: space-between;
+}
+
+.alerta {
+	padding: 25px;
+	border: 1px solid gray;
+	border-radius: 3px;
+	margin: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.sucesso {
+	border-color: #87c940;
+	color: #FFF;
+	background-color: #a0d468;
+}

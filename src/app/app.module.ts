@@ -1,35 +1,25 @@
-import { UsersService } from './users.service';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersFormComponent } from './users-form/users-form.component';
+import { UsersService } from './users.service';
 import { MaterialModule } from './material/material.module';
-
 import { TextMaskModule } from 'angular2-text-mask';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    UsersFormComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MaterialModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    TextMaskModule,
-    FlexLayoutModule,
-    HttpModule
-  ],
-  providers: [UsersService],
-  bootstrap: [AppComponent]
+  imports:      [ BrowserModule, 
+                  FormsModule,
+                  MaterialModule, 
+                  BrowserAnimationsModule,
+                  TextMaskModule,
+                  HttpModule
+                  ],
+  declarations: [ AppComponent, UsersFormComponent ],
+  bootstrap:    [ AppComponent ],
+  providers: [UsersService]
 })
 export class AppModule { }

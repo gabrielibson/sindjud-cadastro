@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsersService {
 
-  private baseUrl: string = 'http://localhost:8080';
+  private baseUrl: string = 'http://sindjudonline.sindjudpe.org.br:8080/usersRestAPI-0.0.1-SNAPSHOT';
   constructor(private http : Http) { }
 
   getAll(): Observable<Person[]>{
