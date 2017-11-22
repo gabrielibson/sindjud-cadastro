@@ -1,0 +1,26 @@
+<div class="example-container">
+  <div [hidden]="submitted">
+  <form #validationForm="ngForm" (ngSubmit)="onSubmit()" >
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Validação de Cadastro</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput placeholder="CPF" pattern="[0-9]+" maxlength="11" minlength="11" [(ngModel)]="cpf" required #cpfForm="ngModel" name="cpf">
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button type="submit" [disabled]="!validationForm.form.valid">VALIDAR</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
+</div>
+<div [hidden]="!submitted">
+    <mat-card>
+      <mat-card-content>
+        <div class="alerta sucesso">Seu cadastro foi validado com sucesso.</div>
+      </mat-card-content>
+    </mat-card>
+  </div>

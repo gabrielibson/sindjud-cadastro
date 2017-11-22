@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -6,9 +7,10 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { UsersFormComponent } from './users-form/users-form.component';
-import { UsersService } from './users.service';
+import { UsersService } from './services/users.service';
 import { MaterialModule } from './material/material.module';
 import { TextMaskModule } from 'angular2-text-mask';
+import { CodeConfirmComponent } from './code-confirm/code-confirm.component';
 
 @NgModule({
   imports:      [ BrowserModule, 
@@ -16,9 +18,10 @@ import { TextMaskModule } from 'angular2-text-mask';
                   MaterialModule, 
                   BrowserAnimationsModule,
                   TextMaskModule,
-                  HttpModule
+                  HttpModule,
+                  AppRoutingModule
                   ],
-  declarations: [ AppComponent, UsersFormComponent ],
+  declarations: [ AppComponent, UsersFormComponent, CodeConfirmComponent ],
   bootstrap:    [ AppComponent ],
   providers: [UsersService]
 })

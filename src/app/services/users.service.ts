@@ -1,4 +1,4 @@
-import { Person } from './person';
+import { Person } from '../model/person';
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsersService {
 
-  private baseUrl: string = 'http://sindjudonline.sindjudpe.org.br:8080/cadastro';
+  private baseUrl: string = 'http://localhost:9000/usersRestAPI';
   constructor(private http : Http) { }
 
   getAll(): Observable<Person[]>{
@@ -26,6 +26,10 @@ export class UsersService {
 
   save(person: Person): Observable<Response>{
     return this.http.post(`${this.baseUrl}/users`, person, {headers: this.getHeaders()})
+  }
+
+  activateUser(cpf: string, code: string): Observable<Response>{
+    return this.http.get(`${this.baseUrl}/users/validarCodigoAcesso?cpfPessoa=${cpf}&codigoAcesso=${code}`);
   }
 
   private getHeaders(){

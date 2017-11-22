@@ -1,0 +1,30 @@
+mat-card-title{
+  font-weight: bold;
+}
+
+mat-card-header{
+    flex-direction: column;
+    text-align: center;
+}
+
+button{
+    border: solid 1px midnightblue;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    background-color: midnightblue;
+    border-color: midnightblue;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0;
+    color: #ffffff;
+}
+
+.mat-button[disabled]{
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+}
+
+mat-card{
+    text-align: center;
+}

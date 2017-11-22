@@ -1,14 +1,15 @@
-import { UsersService } from './../users.service';
-import { Person } from './../person';
-import { Component, OnInit } from '@angular/core';
+import { UsersService } from './../services/users.service';
+import { Person } from './../model/person';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-users-form',
   templateUrl: './users-form.component.html',
   styleUrls: ['./users-form.component.css']
 })
-export class UsersFormComponent implements OnInit {
+export class UsersFormComponent implements OnInit, OnDestroy {
 
+  sub: any;
   person: Person;
   people: Person[] = [];
 
@@ -24,8 +25,12 @@ export class UsersFormComponent implements OnInit {
     .subscribe(p => this.people = p);*/
   }
 
+  ngOnDestroy(){
+    this.sub.unsubscribe();
+  }
+
   savePerson(){
-    this.usersService.save(this.person).subscribe(
+    this.sub = this.usersService.save(this.person).subscribe(
       r => this.submitted = true);
   }
 
@@ -51,17 +56,14 @@ export class UsersFormComponent implements OnInit {
     {value: 'Analista Judiciário - Equipe de Saúde (Odontologista - Médico)'}
   ];
 
-  showme = true
-  next = false
+  dadosPessoais = false;
   showDadosPessoais(){
-    this.showme = true;
-    this.next = false;
+    this.dadosPessoais = false;
     window.scrollTo(0,0);
   }
 
   showDadosFuncionais(){
-    this.showme = false;
-    this.next = true;
+    this.dadosPessoais = true;
     window.scrollTo(0,0);
   }
 
