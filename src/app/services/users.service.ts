@@ -56,13 +56,6 @@ function toPerson(r:any): Person{
   return person;
 }
 
-// to avoid breaking the rest of our app
-// I extract the id from the person url
-function extractId(personData:any){
-  let extractedId = personData.url.replace('http://localhost:8080/users/','').replace('/','');
-  return parseInt(extractedId);
-}
-
 function mapPerson(response:Response): Person{
    // toPerson looks just like in the previous example
    return toPerson(response.json());

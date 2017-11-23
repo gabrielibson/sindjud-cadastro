@@ -24,3 +24,11 @@
       </mat-card-content>
     </mat-card>
   </div>
+
+  <div [hidden]="!msgError">
+    <mat-card>
+      <mat-card-content>
+        <div class="alerta error">{{ msgError }}</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
