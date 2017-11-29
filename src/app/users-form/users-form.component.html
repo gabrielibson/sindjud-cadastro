@@ -1,210 +1,230 @@
 <div class="example-container">
   <div [hidden]="submitted">
-  <form #personForm="ngForm" (ngSubmit)="savePerson()">
-    <div [hidden]="dadosPessoais">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Dados Pessoais</mat-card-title>
-        <mat-card-subtitle>Etapa 1 de 2</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content class="dadosPessoais">
-        <mat-form-field>
-          <input matInput maxlength="100" minlength="4" placeholder="Nome" name="nome" [(ngModel)]="person.nome" required #name="ngModel">
-        </mat-form-field>
-        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
-          <div *ngIf="name.errors.required">
-            Nome é obrigatório.
-          </div>
-          <div *ngIf="name.errors.minlength">
-            Nome deve possuir pelo menos 4 caracteres.
-          </div>
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="RG" pattern="[0-9]+" maxlength="10" [(ngModel)]="person.rg" required #rg="ngModel" name="rg">
-        </mat-form-field>
-        <div *ngIf="rg.invalid && (rg.dirty || rg.touched)" class="error">
-          RG é obrigatório.
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="CPF" pattern="[0-9]+" maxlength="11" [(ngModel)]="person.cpf" required #cpf="ngModel" name="cpf">
-        </mat-form-field>
-        <div *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" class="error">
-          CPF é obrigatório. (Somente números).
-        </div>
-        <mat-form-field>
-          <input type="email" matInput placeholder="E-mail Pessoal" maxlength="50" [(ngModel)]="person.emailPessoal" required #email2="ngModel" name="emailPessoal" email>
-        </mat-form-field>
-        <div *ngIf="email2.invalid && (email2.dirty || email2.touched)" class="error">
-          Email Pessoal é obrigatório. (exemplo@exemplo.com).
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Data de Nascimento" [textMask]="{mask: dateMask}" [(ngModel)]="person.dataNascimento" required
-            #data="ngModel" name="dataNascimento">
-        </mat-form-field>
-        <div *ngIf="data.invalid && (data.dirty || data.touched)" class="error">
-          Data de Nascimento é obrigatório.
-        </div>
-        <mat-form-field>
-          <mat-select placeholder="Sexo" [(ngModel)]="person.sexo" [(ngModel)]="sexo" required #gender="ngModel" name="sexo">
-            <mat-option *ngFor="let sexo of options" [value]="sexo.value">{{sexo.viewValue}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="error">
-          Escolha um sexo.
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Celular 1" [textMask]="{mask: celMask}" [(ngModel)]="person.celular1" required #celular1="ngModel"
-            name="celular1">
-        </mat-form-field>
-        <div *ngIf="celular1.invalid && (celular1.dirty || celular1.touched)" class="error">
-          Celular 1 é obrigatório. (xx) xxxxx-xxxx.
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Celular 2 (opcional)" [textMask]="{mask: celMask}" [(ngModel)]="person.celular2" #telefone="ngModel"
-            name="celular2">
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content class="address">
-        <p style="font-weight: bold">Endereço Residencial</p>
-        <mat-form-field style="width: 81.5%">
-          <input matInput placeholder="Endereço" maxlength="50" [(ngModel)]="person.endereco.rua" required #rua="ngModel" name="rua">
-        </mat-form-field>
-        <div *ngIf="rua.invalid && (rua.dirty || rua.touched)" class="error">
-          Endereço é obrigatório.
-        </div>
-        <div style="flex-direction: row; justify-content: space-around">
-          <mat-form-field class="address">
-            <input matInput placeholder="Número" maxlength="7" [(ngModel)]="person.endereco.numero" required #numero="ngModel" name="numero">
-          </mat-form-field>
-          <mat-form-field class="address">
-            <input matInput placeholder="Complemento" maxlength="20" [(ngModel)]="person.endereco.complemento" #complemento="ngModel" name="complemento">
-          </mat-form-field>
-          <mat-form-field class="address">
-            <input matInput placeholder="Bairro" maxlength="25" [(ngModel)]="person.endereco.bairro" required #bairro="ngModel" name="bairro">
-          </mat-form-field>
-          <mat-form-field class="address">
-            <input matInput placeholder="Cidade" maxlength="25" [(ngModel)]="person.endereco.cidade" required #cidade="ngModel" name="cidade">
-          </mat-form-field>
-          <mat-form-field class="address">
-            <input matInput placeholder="Estado" pattern="[A-Z|a-z]+" maxlength="2" style="text-transform: uppercase" [(ngModel)]="person.endereco.estado" required #estado="ngModel" name="estado">
-          </mat-form-field>
-          <mat-form-field class="address">
-            <input matInput placeholder="CEP" pattern="[0-9]+" maxlength="8" [(ngModel)]="person.endereco.cep" required #cep="ngModel" name="cep">
-          </mat-form-field>
-        </div>
-        <div *ngIf="numero.invalid && (numero.dirty || numero.touched)" class="error">
-          Número é obrigatório (caso não possua, informar S/N).
-        </div>
-        <div *ngIf="bairro.invalid && (bairro.dirty || bairro.touched)" class="error">
-          Biarro é obrigatório.
-        </div>
-        <div *ngIf="cidade.invalid && (cidade.dirty || cidade.touched)" class="error">
-          Cidade é obrigatório.
-        </div>
-        <div *ngIf="estado.invalid && (estado.dirty || estado.touched)" class="error">
-          Estado é obrigatório.
-        </div>
-        <div *ngIf="cep.invalid && (cep.dirty || cep.touched)" class="error">
-          CEP é obrigatório. (Somente números).
-        </div>
-      </mat-card-content>
-      <mat-card-actions class="actionsPessoais">
-        <button type="button" mat-button (click)="showDadosFuncionais()">Próximo</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+    <form #personForm="ngForm" (ngSubmit)="savePerson()" *ngIf="!msgError">
+      <div [hidden]="dadosPessoais">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Dados Pessoais</mat-card-title>
+            <mat-card-subtitle>Etapa 1 de 2</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="dadosPessoais">
+            <mat-form-field>
+              <input matInput maxlength="100" minlength="4" placeholder="Nome" name="nome" [(ngModel)]="person.nome" required #name="ngModel">
+            </mat-form-field>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+              <div *ngIf="name.errors.required">
+                Nome é obrigatório.
+              </div>
+              <div *ngIf="name.errors.minlength">
+                Nome deve possuir pelo menos 4 caracteres.
+              </div>
+            </div>
+            <mat-form-field>
+              <input matInput placeholder="RG" pattern="[0-9]+" maxlength="10" [(ngModel)]="person.rg" required #rg="ngModel" name="rg">
+            </mat-form-field>
+            <div *ngIf="rg.invalid && (rg.dirty || rg.touched)" class="error">
+              RG é obrigatório.
+            </div>
+            <mat-form-field>
+              <input matInput placeholder="CPF" pattern="[0-9]+" maxlength="11" [(ngModel)]="person.cpf" required #cpf="ngModel" name="cpf"
+                (blur)="consultarPessoa(event)">
+            </mat-form-field>
+            <div *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" class="error">
+              CPF é obrigatório. (Somente números).
+            </div>
+            <mat-form-field>
+              <input type="email" matInput placeholder="E-mail Pessoal" maxlength="50" [(ngModel)]="person.emailPessoal" required #email2="ngModel"
+                name="emailPessoal" email>
+            </mat-form-field>
+            <div *ngIf="email2.invalid && (email2.dirty || email2.touched)" class="error">
+              Email Pessoal é obrigatório. (exemplo@exemplo.com).
+            </div>
+            <mat-form-field>
+              <input matInput placeholder="Data de Nascimento" [textMask]="{mask: dateMask}" [(ngModel)]="person.dataNascimento" required
+                #data="ngModel" name="dataNascimento">
+            </mat-form-field>
+            <div *ngIf="data.invalid && (data.dirty || data.touched)" class="error">
+              Data de Nascimento é obrigatório.
+            </div>
+            <mat-form-field>
+              <mat-select placeholder="Sexo" [(ngModel)]="person.sexo" required #sexo="ngModel" name="sexo">
+                <mat-option *ngFor="let option of options" [value]="option.value">{{option.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)" class="error">
+              Escolha um sexo.
+            </div>
+            <mat-form-field>
+              <input matInput placeholder="Celular 1" [textMask]="{mask: celMask}" [(ngModel)]="person.celular1" required #celular1="ngModel"
+                name="celular1">
+            </mat-form-field>
+            <div *ngIf="celular1.invalid && (celular1.dirty || celular1.touched)" class="error">
+              Celular 1 é obrigatório. (xx) xxxxx-xxxx.
+            </div>
+            <mat-form-field>
+              <input matInput placeholder="Celular 2 (opcional)" [textMask]="{mask: celMask}" [(ngModel)]="person.celular2" #celular2="ngModel"
+                name="celular2">
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-content class="address">
+            <p style="font-weight: bold">Endereço Residencial</p>
+            <mat-form-field class="address">
+              <input matInput placeholder="CEP" pattern="[0-9]+" maxlength="8" [(ngModel)]="person.endereco.cep" required #cep="ngModel"
+                name="cep" (blur)="consultarCEP(event)">
+            </mat-form-field>
+            <div *ngIf="cep.invalid && (cep.dirty || cep.touched)" class="error">
+              CEP é obrigatório. (Somente números).
+            </div>
+            <mat-form-field style="width: 81.5%">
+              <input matInput placeholder="Endereço" maxlength="50" [(ngModel)]="person.endereco.rua" required #rua="ngModel" name="rua">
+            </mat-form-field>
+            <div *ngIf="rua.invalid && (rua.dirty || rua.touched)" class="error">
+              Endereço é obrigatório.
+            </div>
+            <div style="flex-direction: row; justify-content: space-around">
+              <mat-form-field class="address">
+                <input matInput placeholder="Número" maxlength="7" [(ngModel)]="person.endereco.numero" required #numero="ngModel" name="numero">
+              </mat-form-field>
+              <mat-form-field class="address">
+                <input matInput placeholder="Complemento" maxlength="20" [(ngModel)]="person.endereco.complemento" #complemento="ngModel"
+                  name="complemento">
+              </mat-form-field>
+              <mat-form-field class="address">
+                <input matInput placeholder="Bairro" maxlength="25" [(ngModel)]="person.endereco.bairro" required #bairro="ngModel" name="bairro">
+              </mat-form-field>
+              <mat-form-field class="address">
+                <input matInput placeholder="Cidade" maxlength="25" [(ngModel)]="person.endereco.cidade" required #cidade="ngModel" name="cidade">
+              </mat-form-field>
+              <mat-form-field class="address">
+                <input matInput placeholder="Estado" pattern="[A-Z|a-z]+" maxlength="2" style="text-transform: uppercase" [(ngModel)]="person.endereco.estado"
+                  required #estado="ngModel" name="estado">
+              </mat-form-field>
+            </div>
+            <div *ngIf="numero.invalid && (numero.dirty || numero.touched)" class="error">
+              Número é obrigatório (caso não possua, informar S/N).
+            </div>
+            <div *ngIf="bairro.invalid && (bairro.dirty || bairro.touched)" class="error">
+              Biarro é obrigatório.
+            </div>
+            <div *ngIf="cidade.invalid && (cidade.dirty || cidade.touched)" class="error">
+              Cidade é obrigatório.
+            </div>
+            <div *ngIf="estado.invalid && (estado.dirty || estado.touched)" class="error">
+              Estado é obrigatório.
+            </div>
+          </mat-card-content>
+          <mat-card-actions class="actionsPessoais">
+            <button type="button" mat-button (click)="showDadosFuncionais()">Próximo</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
 
-  <div [hidden]="!dadosPessoais">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Dados Funcionais</mat-card-title>
-        <mat-card-subtitle>Etapa 2 de 2</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content class="dadosPessoais">
-        <mat-form-field>
-          <input matInput class="example-right-align" maxlength="20" placeholder="E-mail Institucional" [(ngModel)]="person.emailInstitucional" required
-            #email1="ngModel" name="emailInstitucional">
-          <span matSuffix>@tjpe.jus.br</span>
-        </mat-form-field>
-        <div *ngIf="email1.invalid && (email1.dirty || email1.touched)" class="error">
-          Email Institucional é obrigatório.
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Matrícula" maxlength="15" [(ngModel)]="person.matricula" required #matricula="ngModel" name="matricula">
-        </mat-form-field>
-        <div *ngIf="matricula.invalid && (matricula.dirty || matricula.touched)" class="error">
-          Matrícula é obrigatório.
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Comarca" maxlength="25" [(ngModel)]="person.comarca" required #comarca="ngModel" name="comarca">
-        </mat-form-field>
-        <div *ngIf="comarca.invalid && (comarca.dirty || comarca.touched)" class="error">
-          Comarca é obrigatório.
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Lotação Atual" maxlength="25" [(ngModel)]="person.lotacao" required #lotacao="ngModel" name="lotacao">
-        </mat-form-field>
-        <div *ngIf="lotacao.invalid && (lotacao.dirty || lotacao.touched)" class="error">
-          Lotação é obrigatório.
-        </div>
-        <mat-form-field>
-          <mat-select placeholder="Cargo" [(ngModel)]="person.cargo" required #cargo="ngModel" name="cargo">
-            <mat-option *ngFor="let cargo of cargos" [value]="cargo.value">{{ cargo.value }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div *ngIf="cargo.invalid && (cargo.dirty || cargo.touched)" class="error">
-          Cargo é obrigatório.
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Função" maxlength="35" [(ngModel)]="person.funcao" required #funcao="ngModel" name="funcao">
-        </mat-form-field>
-        <div *ngIf="funcao.invalid && (funcao.dirty || funcao.touched)" class="error">
-          Função é obrigatório.
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Telefone" [textMask]="{mask: phoneMask}" [(ngModel)]="person.telefone" required #telefone="ngModel"
-            name="telefone">
-        </mat-form-field>
-        <div *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)" class="error">
-          Telefone é obrigatório. (xx) xxxx-xxxx.
-        </div>
-        <div style="margin-top:10px; margin-bottom:10px">
-          <label for="filicaoId">Filiação: </label>
-          <div id="filicaoId" style="margin-top:10px">
-            <mat-radio-group [(ngModel)]="person.afiliado" required #ctrl="ngModel" name="filiado">
-              <mat-radio-button value="1">
-                <div class="radio-label">Sou filiado ao SINDJUD PE e contribuo mensalmente com desconto em folha de pagamento.</div>
-              </mat-radio-button>
-              <mat-radio-button value="2">
-                <div class="radio-label">Não sou filiado ao SINDJUD PE, mas pretendo me filiar em breve. </div>
-              </mat-radio-button>
-              <mat-radio-button value="3">
-                <div class="radio-label"> Não sou filiado ao SINDJUD PE, mas tenho interesse em ter acesso às assembléias on-line.</div>
-              </mat-radio-button>
-            </mat-radio-group>
-          </div>
-        </div>
-        <br />
-        <mat-checkbox [(ngModel)]="person.envio" name="envio">
-          <div class="checkbox-label">
-            Autorizo o envio de e-mails, correspondências, mensagens de texto (sms) para meus contatos fornecidos neste formulário,
-            desde que seja estritamente necessário ao bom funcionamento da entidade sindical.
-          </div>
-        </mat-checkbox>
-      </mat-card-content>
-      <mat-card-actions class="actionsFuncionais">
-        <button mat-button type="button" (click)="showDadosPessoais()">Voltar</button>
-        <button mat-button type="submit" [disabled]="!personForm.form.valid">Enviar</button>
-      </mat-card-actions>
-    </mat-card>
+      <div [hidden]="!dadosPessoais">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Dados Funcionais</mat-card-title>
+            <mat-card-subtitle>Etapa 2 de 2</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="dadosPessoais">
+            <mat-form-field>
+              <input matInput class="example-right-align" maxlength="20" placeholder="E-mail Institucional" [(ngModel)]="person.emailInstitucional"
+                required #email1="ngModel" name="emailInstitucional">
+              <span matSuffix>@tjpe.jus.br</span>
+            </mat-form-field>
+            <div *ngIf="email1.invalid && (email1.dirty || email1.touched)" class="error">
+              Email Institucional é obrigatório.
+            </div>
+            <mat-form-field>
+              <input matInput placeholder="Matrícula" maxlength="15" [(ngModel)]="person.matricula" required #matricula="ngModel" name="matricula">
+            </mat-form-field>
+            <div *ngIf="matricula.invalid && (matricula.dirty || matricula.touched)" class="error">
+              Matrícula é obrigatório.
+            </div>
+            <mat-form-field>
+              <mat-select placeholder="Comarca" [(ngModel)]="person.comarca" required #comarca="ngModel" name="comarca">
+                <mat-option *ngFor="let comarca of comarcas.values" [value]="comarca">{{ comarca }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="comarca.invalid && (comarca.dirty || comarca.touched)" class="error">
+              Comarca é obrigatório.
+            </div>
+            <mat-form-field>
+              <input matInput placeholder="Lotação Atual" maxlength="50" [(ngModel)]="person.lotacao" required #lotacao="ngModel" name="lotacao">
+            </mat-form-field>
+            <div *ngIf="lotacao.invalid && (lotacao.dirty || lotacao.touched)" class="error">
+              Lotação é obrigatório.
+            </div>
+            <mat-form-field>
+              <mat-select placeholder="Cargo" [(ngModel)]="person.cargo" required #cargo="ngModel" name="cargo">
+                <mat-option *ngFor="let cargo of cargos" [value]="cargo.value">{{ cargo.value }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="cargo.invalid && (cargo.dirty || cargo.touched)" class="error">
+              Cargo é obrigatório.
+            </div>
+            <mat-form-field>
+              <mat-select placeholder="Função Gratificada" [(ngModel)]="person.funcao" required #funcao="ngModel" name="funcao">
+                <mat-option *ngFor="let fg of fgs" [value]="fg.value">{{ fg.value }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="funcao.invalid && (funcao.dirty || funcao.touched)" class="error">
+              Função é obrigatório.
+            </div>
+            <mat-form-field>
+              <input matInput placeholder="Telefone" [textMask]="{mask: phoneMask}" [(ngModel)]="person.telefone" required #telefone="ngModel"
+                name="telefone">
+            </mat-form-field>
+            <div *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)" class="error">
+              Telefone é obrigatório. (xx) xxxx-xxxx.
+            </div>
+            <div style="margin-top:10px; margin-bottom:10px">
+              <label for="filicaoId">Filiação: </label>
+              <div id="filicaoId" style="margin-top:10px">
+                <mat-radio-group [(ngModel)]="person.afiliado" required #ctrl="ngModel" name="filiado">
+                  <mat-radio-button value="1">
+                    <div class="radio-label">Sou filiado ao SINDJUD PE e contribuo mensalmente com desconto em folha de pagamento.</div>
+                  </mat-radio-button>
+                  <mat-radio-button value="2">
+                    <div class="radio-label">Não sou filiado ao SINDJUD PE, mas pretendo me filiar em breve. </div>
+                  </mat-radio-button>
+                  <mat-radio-button value="3">
+                    <div class="radio-label"> Não sou filiado ao SINDJUD PE, mas tenho interesse em ter acesso às assembléias on-line.</div>
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+            <br />
+            <mat-checkbox [(ngModel)]="person.envio" name="envio">
+              <div class="checkbox-label">
+                Autorizo o envio de e-mails, correspondências, mensagens de texto (sms) para meus contatos fornecidos neste formulário, desde
+                que seja estritamente necessário ao bom funcionamento da entidade sindical.
+              </div>
+            </mat-checkbox>
+          </mat-card-content>
+          <mat-card-actions class="actionsFuncionais">
+            <button mat-button type="button" (click)="showDadosPessoais()">Voltar</button>
+            <button mat-button type="submit" [disabled]="!personForm.form.valid">
+              <mat-progress-spinner style=" margin-top: 8px; margin-right: 5px; float:left" [diameter]=20  *ngIf="isLoading"  mode="indeterminate"></mat-progress-spinner>
+              Enviar
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </form>
   </div>
-  </form>
-</div>
 </div>
 <div [hidden]="!submitted">
   <mat-card>
     <mat-card-content>
       <div class="alerta sucesso">Seu cadastro está quase terminado. Um e-mail de confirmação foi enviado para {{ person.emailPessoal }}.</div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div [hidden]="!msgError">
+  <mat-card>
+    <mat-card-content>
+      <div class="alerta error">{{ msgError }}</div>
     </mat-card-content>
   </mat-card>
 </div>

@@ -30,7 +30,6 @@ export class CodeConfirmComponent implements OnInit, OnDestroy {
   validarCadastro(){
     this.usersService.activateUser(this.cpf, this.code).subscribe(
       r=> {
-        console.log(r);
         this.submitted = true;
       },
       err => {

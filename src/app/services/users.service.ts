@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Person } from '../model/person';
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
@@ -7,7 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsersService {
 
-  private baseUrl: string = 'http://localhost:9000/usersRestAPI';
+  baseUrl: string = environment.url;
   constructor(private http : Http) { }
 
   getAll(): Observable<Person[]>{
@@ -17,9 +18,9 @@ export class UsersService {
     return users$;
   }
 
-  get(id: number) : Observable<Person>{
+  get(cpfPessoa: string) : Observable<Person>{
     let user$ = this.http
-    .get(`${this.baseUrl}/users/${id}`, {headers: this.getHeaders()})
+    .get(`${this.baseUrl}/users/${cpfPessoa}`, {headers: this.getHeaders()})
     .map(mapPerson);
     return user$;
   }
@@ -47,10 +48,10 @@ function mapUsers(response:Response): Person[]{
 
 function toPerson(r:any): Person{
   let person = <Person>({
-    id: r.id,
-    nome: r.name,
-    dataNascimento: r.dateOfBirth,
-    sexo: r.gender
+    cpf: r.cpf,
+    nome: r.nome,
+    dataNascimento: r.dataNascimento,
+    sexo: r.sexo
   });
   console.log('Parsed person:', person);
   return person;
