@@ -18,6 +18,7 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   result: any;
   comarcas: Comarca;
   isLoading = false;
+  siteKey = "6LfS2ToUAAAAAMb4wQhvcXkbZu_3KnD21Go1sX39";
 
   submitted = false;
 
@@ -36,9 +37,9 @@ export class UsersFormComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  savePerson() {
+  savePerson(captchaResponse: string) {
     this.isLoading = true;
-    this.sub = this.usersService.save(this.person).subscribe(
+    this.sub = this.usersService.save(captchaResponse, this.person).subscribe(
       r => this.submitted = true);
   }
 

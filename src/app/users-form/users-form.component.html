@@ -1,6 +1,7 @@
 <div class="example-container">
   <div [hidden]="submitted">
-    <form #personForm="ngForm" (ngSubmit)="savePerson()" *ngIf="!msgError">
+    <form #personForm="ngForm" *ngIf="!msgError">
+        <re-captcha size="invisible" #invisible (resolved)="response = $event && savePerson($event)"></re-captcha>
       <div [hidden]="dadosPessoais">
         <mat-card>
           <mat-card-header>
@@ -203,7 +204,7 @@
           </mat-card-content>
           <mat-card-actions class="actionsFuncionais">
             <button mat-button type="button" (click)="showDadosPessoais()">Voltar</button>
-            <button mat-button type="submit" [disabled]="!personForm.form.valid">
+            <button mat-button type="submit" [disabled]="!personForm.form.valid" (click)="invisible.execute()">
               <mat-progress-spinner style=" margin-top: 8px; margin-right: 5px; float:left" [diameter]=20  *ngIf="isLoading"  mode="indeterminate"></mat-progress-spinner>
               Enviar
             </button>

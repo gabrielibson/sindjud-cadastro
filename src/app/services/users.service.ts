@@ -25,8 +25,8 @@ export class UsersService {
     return user$;
   }
 
-  save(person: Person): Observable<Response>{
-    return this.http.post(`${this.baseUrl}/users`, person, {headers: this.getHeaders()})
+  save(captchaResponse: string, person: Person): Observable<Response>{
+    return this.http.post(`${this.baseUrl}/users`, {recaptcha: captchaResponse, person}, {headers: this.getHeaders()})
   }
 
   activateUser(cpf: string, code: string): Observable<Response>{
