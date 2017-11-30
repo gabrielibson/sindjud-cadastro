@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:9000/usersRestAPI'
+  url: 'http://localhost:9000/cadastro'
 };

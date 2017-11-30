@@ -19,6 +19,7 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   comarcas: Comarca;
   isLoading = false;
   siteKey = "6LfS2ToUAAAAAMb4wQhvcXkbZu_3KnD21Go1sX39";
+  erroBody: any;
 
   submitted = false;
 
@@ -40,7 +41,15 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   savePerson(captchaResponse: string) {
     this.isLoading = true;
     this.sub = this.usersService.save(captchaResponse, this.person).subscribe(
-      r => this.submitted = true);
+      r => {
+        this.submitted = true
+      },
+      err => {
+        this.isLoading = false;
+        this.erroBody = JSON.parse(err._body);
+        this.msgError = this.erroBody.message;
+      }
+    );
   }
 
   consultarCEP() {

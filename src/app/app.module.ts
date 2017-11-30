@@ -11,7 +11,7 @@ import { UsersService } from './services/users.service';
 import { MaterialModule } from './material/material.module';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CodeConfirmComponent } from './code-confirm/code-confirm.component';
-import { RecaptchaModule, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
 
 @NgModule({
   imports:      [ BrowserModule, 
@@ -30,6 +30,10 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
     useValue: { 
       siteKey: '6LfS2ToUAAAAAMb4wQhvcXkbZu_3KnD21Go1sX39',
     },
+  },
+  {
+    provide: RECAPTCHA_LANGUAGE,
+    useValue: 'pt-BR',
   },
 ],
 })
