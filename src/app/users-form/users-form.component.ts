@@ -95,15 +95,23 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 
  fgs = [
     { value: 'Nenhuma' },
-    { value: 'Chefe de Secretaria Adjunto' },
-    { value: 'Assessor de Magistrado' },
-    { value: 'Secretariado e Apoio Administrativo' },
-    { value: 'Supervisor de Processamento Remoto' },
-    { value: 'Gerente' },
-    { value: 'Gestor de Projeto Estratégico' },
-    { value: 'Diretor Executivo de Diretoria de Processamento' },
-    { value: 'Chefe de Núcleo' },
-    { value: 'Diretor Regional' }
+    { value: 'FAP-AJ1G_Apoio à Atividade Jurisdicional do 1º Grau de Jurisdição' },
+    { value: 'FGAM_Assessor de Magistrado de 1º Grau' },
+    { value: 'FGJ-1_Chefe de Núcleo' },
+    { value: 'FGJ-2_Chefe de Unidade' },
+    { value: 'FGCSJ-1_Chefe de Secretaria' },
+    { value: 'FGCSJ-2_Chefe de Secretaria Adjunto' },
+    { value: 'FGCSJD_Chefe de Secretaria de Estrutura Diferenciada' },
+    { value: 'FGDR_Diretor Regional' },
+    { value: 'FGDPR_Diretor de Diretoria de Processamento Remoto' },
+    { value: 'FGDEPR_Diretor Executivo de Diretoria de Processamento Remoto' },
+    { value: 'FGJ-1_Gerente' },
+    { value: 'FGJ-2_Gerencial Judiciária' },
+    { value: 'FGJ-2_Gestor de Projeto' },
+    { value: 'FGGPE-1_Gestor de Projeto Estratégico I' },
+    { value: 'FGGPE-2_Gestor de Projeto Estratégico II' },
+    { value: 'FGGPE-3_Gestor de Projeto Estratégico III' },
+    { value: 'FGSPR_Supervisor de Processamento Remoto' },
   ]
 
   dadosPessoais = false;
