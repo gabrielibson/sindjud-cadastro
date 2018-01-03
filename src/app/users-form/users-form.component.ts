@@ -82,36 +82,37 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   ];
 
   cargos = [
-    { value: 'Aux. Judiciário' },
-    { value: 'Téc. Judiciário' },
-    { value: 'Téc. Judiciário - Informática' },
-    { value: 'Téc. Administrativo' },
-    { value: 'Analista Judiciário' },
-    { value: 'Analista Administrativo' },
-    { value: 'Analista Judiciário - Informática' },
-    { value: 'Analista Judiciário - Apoio Especializado (Assistente Social - Psicólogo - Pedagogo)' },
-    { value: 'Analista Judiciário - Equipe de Saúde (Odontologista - Médico)' }
+    { value: 'Analista Judiciário (APJ) - Apoio Especializado' },
+    { value: 'Analista Judiciário (APJ) - Função Administrativa' },
+    { value: 'Analista Judiciário (APJ) - Função Judiciária' },
+    { value: 'Aux. Judiciário - PJ I' },
+    { value: 'Oficial de Justiça - OPJ' },
+    { value: 'Oficial de Justiça - PJ III' },
+    { value: 'Téc. Judiciário (TPJ) - Apoio Especializado' },
+    { value: 'Téc. Judiciário (TPJ) - Função Administrativa' },
+    { value: 'Téc. Judiciário (TPJ) - Função Judiciária' }
   ];
 
  fgs = [
     { value: 'Nenhuma' },
-    { value: 'FAP-AJ1G_Apoio à Atividade Jurisdicional do 1º Grau de Jurisdição' },
-    { value: 'FGAM_Assessor de Magistrado de 1º Grau' },
-    { value: 'FGJ-1_Chefe de Núcleo' },
-    { value: 'FGJ-2_Chefe de Unidade' },
-    { value: 'FGCSJ-1_Chefe de Secretaria' },
-    { value: 'FGCSJ-2_Chefe de Secretaria Adjunto' },
-    { value: 'FGCSJD_Chefe de Secretaria de Estrutura Diferenciada' },
-    { value: 'FGDR_Diretor Regional' },
-    { value: 'FGDPR_Diretor de Diretoria de Processamento Remoto' },
-    { value: 'FGDEPR_Diretor Executivo de Diretoria de Processamento Remoto' },
-    { value: 'FGJ-1_Gerente' },
-    { value: 'FGJ-2_Gerencial Judiciária' },
-    { value: 'FGJ-2_Gestor de Projeto' },
-    { value: 'FGGPE-1_Gestor de Projeto Estratégico I' },
-    { value: 'FGGPE-2_Gestor de Projeto Estratégico II' },
-    { value: 'FGGPE-3_Gestor de Projeto Estratégico III' },
-    { value: 'FGSPR_Supervisor de Processamento Remoto' },
+    { value: 'AP-AJ1G_Apoio à Atividade Jurisdicional do 1º Grau de Jurisdição' },
+    { value: 'FGAM_Assessoria de Magistrado' },
+    { value: 'FGJ-1_Chefia de Núcleo/Distribuição/Secretarias/Precatórios/Seção/Gerência' },
+    { value: 'FGJ-2_Chefia de Unidade/Secretaria Geral Adjunta/Gerencial Judiciária/Gestão Projetos' },
+    { value: 'FGCSJ-1_Chefia de Secretaria' },
+    { value: 'FGCSJ-2_Chefia de Secretaria Adjunta' },
+    { value: 'FGCSJD_Chefia de Secretaria de Estrutura Diferenciada' },
+    { value: 'FGCJ-1_Conciliação Juizado' },
+    { value: 'FGDR_Diretoria Regional' },
+    { value: 'FGDPR_Diretoria de Processamento Remoto' },
+    { value: 'FGDEPR_Diretoria Executiva de Processamento Remoto' },
+    { value: 'FGNDM-1_Chefia Núcleo Distribuição de Mandados' },
+    { value: 'FSJ-1_Distribuição Queixas Juizados/Secretarias' },
+    { value: 'FSJ-3_Administração Foro' },
+    { value: 'FGGPE-1_Gestão de Projeto Estratégico I' },
+    { value: 'FGGPE-2_Gestão de Projeto Estratégico II' },
+    { value: 'FGGPE-3_Gestão de Projeto Estratégico III' },
+    { value: 'FGSPR_Supervisão de Processamento Remoto' },
   ]
 
   dadosPessoais = false;
