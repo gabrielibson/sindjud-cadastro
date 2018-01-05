@@ -6,7 +6,7 @@
         <mat-card>
           <mat-card-header>
             <mat-card-title>Dados Pessoais</mat-card-title>
-            <mat-card-subtitle>Etapa 1 de 2</mat-card-subtitle>
+            <mat-card-subtitle>Etapa 1 de 3</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content class="dadosPessoais">
             <mat-form-field>
@@ -120,11 +120,11 @@
         </mat-card>
       </div>
 
-      <div [hidden]="!dadosPessoais">
+      <div [hidden]="dadosFuncionais">
         <mat-card>
           <mat-card-header>
             <mat-card-title>Dados Funcionais</mat-card-title>
-            <mat-card-subtitle>Etapa 2 de 2</mat-card-subtitle>
+            <mat-card-subtitle>Etapa 2 de 3</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content class="dadosPessoais">
             <mat-form-field>
@@ -204,6 +204,27 @@
           </mat-card-content>
           <mat-card-actions class="actionsFuncionais">
             <button mat-button type="button" (click)="showDadosPessoais()">Voltar</button>
+            <button type="button" mat-button (click)="showSenha()">Próximo</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+      <div [hidden]="formSenha">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Criar Senha</mat-card-title>
+            <mat-card-subtitle>Etapa 3 de 3</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="dadosPessoais">
+            <mat-form-field>
+              <input matInput type="password" placeholder="Senha" maxlength="16" [(ngModel)]="person.senha" required #senha="ngModel" name="senha" size="20">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Confirmar Senha" maxlength="16" [(ngModel)]="person.confirmaSenha" required #senha="ngModel" size="20" name="confirmaSenha">
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions class="actionsFuncionais">
+            <button mat-button type="button" (click)="showDadosFuncionais()">Voltar</button>
             <button mat-button type="submit" [disabled]="!personForm.form.valid" (click)="invisible.execute()">
               <mat-progress-spinner style=" margin-top: 8px; margin-right: 5px; float:left" [diameter]=20  *ngIf="isLoading"  mode="indeterminate"></mat-progress-spinner>
               Enviar

@@ -116,13 +116,25 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   ]
 
   dadosPessoais = false;
+  dadosFuncionais = true;
+  formSenha = true;
+
   showDadosPessoais() {
     this.dadosPessoais = false;
+    this.dadosFuncionais = true;
     window.scrollTo(0, 0);
   }
 
   showDadosFuncionais() {
+    this.dadosFuncionais = false;
     this.dadosPessoais = true;
+    this.formSenha = true;
+    window.scrollTo(0, 0);
+  }
+
+  showSenha(){
+    this.dadosFuncionais = true;
+    this.formSenha = false;
     window.scrollTo(0, 0);
   }
 

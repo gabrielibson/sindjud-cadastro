@@ -19,6 +19,7 @@ export class Person {
     celular2: string;
     comarca: string;
     envio: boolean;
+    senha: string;
     
     constructor(){
       this.endereco = new Endereco();
