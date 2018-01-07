@@ -12,6 +12,7 @@ export class CodeConfirmComponent implements OnInit, OnDestroy {
   cpf: string;
   code: string;
   submitted = false;
+  msgError: string;
 
   constructor(private route: ActivatedRoute, private usersService: UsersService) { 
   }
@@ -29,8 +30,10 @@ export class CodeConfirmComponent implements OnInit, OnDestroy {
   validarCadastro(){
     this.usersService.activateUser(this.cpf, this.code).subscribe(
       r=> {
-        console.log(r);
         this.submitted = true;
+      },
+      err => {
+        this.msgError = err._body;
       }
       );
   }

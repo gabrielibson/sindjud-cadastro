@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'usersForm', component: UsersFormComponent },
+  { path: 'cadastro', component: UsersFormComponent },
    // map '/' to '/usersForm' as our default route
    {
     path: '',
-    redirectTo: '/usersForm',
+    redirectTo: '/cadastro',
     pathMatch: 'full'
   },
   {path: 'validarCadastro/:code',  component: CodeConfirmComponent },
