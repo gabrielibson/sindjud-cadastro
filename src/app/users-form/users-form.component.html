@@ -239,11 +239,13 @@
               </div>
             </div>
           </mat-card-content>
-          <ng2-password-strength-bar
-                [passwordToCheck]="person.senha"
-                [barLabel]="barLabel"
-                [barColors]="myColors">
-            </ng2-password-strength-bar>
+          <div style="margin: 0 8px;">
+            <ng2-password-strength-bar
+                  [passwordToCheck]="person.senha"
+                  [barLabel]="barLabel"
+                  [barColors]="myColors">
+              </ng2-password-strength-bar>
+          </div>
           <mat-card-actions class="actionsFuncionais">
             <button mat-button type="button" (click)="showDadosFuncionais()">Voltar</button>
             <button mat-button type="submit" [disabled]="!personForm.form.valid" (click)="invisible.execute()">
