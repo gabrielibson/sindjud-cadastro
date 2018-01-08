@@ -12,6 +12,7 @@ import { MaterialModule } from './material/material.module';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CodeConfirmComponent } from './code-confirm/code-confirm.component';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
+import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 
 @NgModule({
   imports:      [ BrowserModule, 
@@ -21,6 +22,7 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RECAPTCHA_LANGUAGE } from 'ng-reca
                   TextMaskModule,
                   HttpModule,
                   AppRoutingModule,
+                  PasswordStrengthBarModule,
                   RecaptchaModule.forRoot(),
                   ],
   declarations: [ AppComponent, UsersFormComponent, CodeConfirmComponent ],

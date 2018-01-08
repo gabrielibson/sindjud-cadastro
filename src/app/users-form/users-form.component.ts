@@ -21,7 +21,12 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   siteKey = "6LfS2ToUAAAAAMb4wQhvcXkbZu_3KnD21Go1sX39";
   erroBody: any;
 
+  confirmaSenha: string;
+
   submitted = false;
+
+  public barLabel: string = "Força da Senha:";
+  public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
 
   constructor(private usersService: UsersService) {
     this.person = new Person();
@@ -40,16 +45,21 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 
   savePerson(captchaResponse: string) {
     this.isLoading = true;
-    this.sub = this.usersService.save(captchaResponse, this.person).subscribe(
-      r => {
-        this.submitted = true
-      },
-      err => {
-        this.isLoading = false;
-        this.erroBody = JSON.parse(err._body);
-        this.msgError = this.erroBody.message;
-      }
-    );
+    if(this.person.senha != this.confirmaSenha){
+      this.sub = this.usersService.save(captchaResponse, this.person).subscribe(
+        r => {
+          this.submitted = true
+        },
+        err => {
+          this.isLoading = false;
+          this.erroBody = JSON.parse(err._body);
+          this.msgError = this.erroBody.message;
+        }
+      );
+    }
+    else{
+      alert("As senhas devem ser iguais!");
+    }
   }
 
   consultarCEP() {

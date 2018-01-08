@@ -217,12 +217,33 @@
           </mat-card-header>
           <mat-card-content class="dadosPessoais">
             <mat-form-field>
-              <input matInput type="password" placeholder="Senha" maxlength="16" [(ngModel)]="person.senha" required #senha="ngModel" name="senha" size="20">
+              <input matInput type="password" placeholder="Senha" minlength="8" maxlength="30" [(ngModel)]="person.senha" required #senha="ngModel" name="senha" size="20">
             </mat-form-field>
+            <div *ngIf="senha.invalid && (senha.dirty || senha.touched)" class="error">
+              <div *ngIf="senha.errors.required">
+                Senha é obrigatório.
+              </div>
+              <div *ngIf="senha.errors.minlength">
+                Senha deve possuir pelo menos 8 caracteres.
+              </div>
+            </div>
             <mat-form-field>
-              <input matInput type="password" placeholder="Confirmar Senha" maxlength="16" [(ngModel)]="person.confirmaSenha" required #senha="ngModel" size="20" name="confirmaSenha">
+              <input matInput type="password" placeholder="Confirmar Senha" minlength="8" maxlength="30" [(ngModel)]="confirmaSenha" required #confirmarSenha="ngModel" size="20" name="confirmaSenha">
             </mat-form-field>
+            <div *ngIf="confirmarSenha.invalid && (confirmarSenha.dirty || confirmarSenha.touched)" class="error">
+              <div *ngIf="confirmarSenha.errors.required">
+                Confirmar Senha é obrigatório.
+              </div>
+              <div *ngIf="confirmarSenha !== senha">
+                Senhas devem ser iguais.
+              </div>
+            </div>
           </mat-card-content>
+          <ng2-password-strength-bar
+                [passwordToCheck]="person.senha"
+                [barLabel]="barLabel"
+                [barColors]="myColors">
+            </ng2-password-strength-bar>
           <mat-card-actions class="actionsFuncionais">
             <button mat-button type="button" (click)="showDadosFuncionais()">Voltar</button>
             <button mat-button type="submit" [disabled]="!personForm.form.valid" (click)="invisible.execute()">
