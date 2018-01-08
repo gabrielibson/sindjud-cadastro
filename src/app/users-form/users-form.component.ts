@@ -45,7 +45,7 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 
   savePerson(captchaResponse: string) {
     this.isLoading = true;
-    if(this.person.senha != this.confirmaSenha){
+    if(this.person.senha === this.confirmaSenha){
       this.sub = this.usersService.save(captchaResponse, this.person).subscribe(
         r => {
           this.submitted = true
@@ -58,6 +58,7 @@ export class UsersFormComponent implements OnInit, OnDestroy {
       );
     }
     else{
+      this.isLoading = false;
       alert("As senhas devem ser iguais!");
     }
   }
