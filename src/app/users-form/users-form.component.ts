@@ -93,15 +93,15 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   ];
 
   cargos = [
-    { value: 'Analista Judiciário (APJ) - Apoio Especializado' },
-    { value: 'Analista Judiciário (APJ) - Função Administrativa' },
-    { value: 'Analista Judiciário (APJ) - Função Judiciária' },
     { value: 'Aux. Judiciário - PJ I' },
-    { value: 'Oficial de Justiça - OPJ' },
-    { value: 'Oficial de Justiça - PJ III' },
-    { value: 'Téc. Judiciário (TPJ) - Apoio Especializado' },
+    { value: 'Téc. Judiciário (TPJ) - Função Judiciária' },
     { value: 'Téc. Judiciário (TPJ) - Função Administrativa' },
-    { value: 'Téc. Judiciário (TPJ) - Função Judiciária' }
+    { value: 'Téc. Judiciário (TPJ) - Apoio Especializado' },
+    { value: 'Analista Judiciário (APJ) - Função Judiciária' },
+    { value: 'Analista Judiciário (APJ) - Função Administrativa' },
+    { value: 'Analista Judiciário (APJ) - Apoio Especializado' },    
+    { value: 'Oficial de Justiça - OPJ' },
+    { value: 'Oficial de Justiça - PJ III' }    
   ];
 
  fgs = [
