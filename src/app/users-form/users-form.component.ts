@@ -18,8 +18,11 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   result: any;
   comarcas: Comarca;
   isLoading = false;
-  siteKey = "6LfS2ToUAAAAAMb4wQhvcXkbZu_3KnD21Go1sX39";
   erroBody: any;
+
+  dadosPessoais = false;
+  dadosFuncionais = true;
+  formSenha = true;
 
   confirmaSenha: string;
 
@@ -34,9 +37,6 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    /*this.usersService
-    .getAll()
-    .subscribe(p => this.people = p);*/
   }
 
   ngOnDestroy() {
@@ -45,7 +45,7 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 
   savePerson(captchaResponse: string) {
     this.isLoading = true;
-    if(this.person.senha === this.confirmaSenha){
+    if (this.person.senha === this.confirmaSenha) {
       this.sub = this.usersService.save(captchaResponse, this.person).subscribe(
         r => {
           this.submitted = true
@@ -57,10 +57,33 @@ export class UsersFormComponent implements OnInit, OnDestroy {
         }
       );
     }
-    else{
+    else {
       this.isLoading = false;
       alert("As senhas devem ser iguais!");
     }
+  }
+
+  showDadosPessoais() {
+    this.dadosPessoais = false;
+    this.dadosFuncionais = true;
+    window.scrollTo(0, 0);
+  }
+
+  showDadosFuncionais() {
+    this.dadosFuncionais = false;
+    this.dadosPessoais = true;
+    this.formSenha = true;
+    window.scrollTo(0, 0);
+  }
+
+  showSenha() {
+    this.dadosFuncionais = true;
+    this.formSenha = false;
+    window.scrollTo(0, 0);
+  }
+
+  onSubmit(form) {
+    console.log(form);
   }
 
   consultarCEP() {
@@ -99,12 +122,12 @@ export class UsersFormComponent implements OnInit, OnDestroy {
     { value: 'Téc. Judiciário (TPJ) - Apoio Especializado' },
     { value: 'Analista Judiciário (APJ) - Função Judiciária' },
     { value: 'Analista Judiciário (APJ) - Função Administrativa' },
-    { value: 'Analista Judiciário (APJ) - Apoio Especializado' },    
+    { value: 'Analista Judiciário (APJ) - Apoio Especializado' },
     { value: 'Oficial de Justiça - OPJ' },
-    { value: 'Oficial de Justiça - PJ III' }    
+    { value: 'Oficial de Justiça - PJ III' }
   ];
 
- fgs = [
+  fgs = [
     { value: 'Nenhuma' },
     { value: 'AP-AJ1G_Apoio à Atividade Jurisdicional do 1º Grau de Jurisdição' },
     { value: 'FGAM_Assessoria de Magistrado' },
@@ -125,32 +148,4 @@ export class UsersFormComponent implements OnInit, OnDestroy {
     { value: 'FGGPE-3_Gestão de Projeto Estratégico III' },
     { value: 'FGSPR_Supervisão de Processamento Remoto' },
   ]
-
-  dadosPessoais = false;
-  dadosFuncionais = true;
-  formSenha = true;
-
-  showDadosPessoais() {
-    this.dadosPessoais = false;
-    this.dadosFuncionais = true;
-    window.scrollTo(0, 0);
-  }
-
-  showDadosFuncionais() {
-    this.dadosFuncionais = false;
-    this.dadosPessoais = true;
-    this.formSenha = true;
-    window.scrollTo(0, 0);
-  }
-
-  showSenha(){
-    this.dadosFuncionais = true;
-    this.formSenha = false;
-    window.scrollTo(0, 0);
-  }
-
-  onSubmit(form) {
-    console.log(form);
-  }
-
 }

@@ -3,6 +3,7 @@
     <form #personForm="ngForm" *ngIf="!msgError">
         <re-captcha size="invisible" #invisible (resolved)="response = $event && savePerson($event)"></re-captcha>
       <div [hidden]="dadosPessoais">
+        <form #dadosPessoaisForm="ngForm">
         <mat-card>
           <mat-card-header>
             <mat-card-title>Dados Pessoais</mat-card-title>
@@ -115,12 +116,15 @@
             </div>
           </mat-card-content>
           <mat-card-actions class="actionsPessoais">
-            <button type="button" mat-button (click)="showDadosFuncionais()">Próximo</button>
+            <span style="font-size: 10px; color:#a94442; margin-left: 23px">Todos os campos com * devem ser preenchidos para prosseguir.</span>
+            <button type="button" mat-button [disabled]="!dadosPessoaisForm.form.valid" (click)="showDadosFuncionais()">Próximo</button>
           </mat-card-actions>
         </mat-card>
+      </form>
       </div>
 
       <div [hidden]="dadosFuncionais">
+        <form #dadosFuncionaisForm="ngForm">
         <mat-card>
           <mat-card-header>
             <mat-card-title>Dados Funcionais</mat-card-title>
@@ -179,7 +183,7 @@
               Telefone é obrigatório. (xx) xxxx-xxxx.
             </div>
             <div style="margin-top:10px; margin-bottom:10px">
-              <label for="filicaoId">Filiação: </label>
+              <label for="filicaoId">Filiação *: </label>
               <div id="filicaoId" style="margin-top:10px">
                 <mat-radio-group [(ngModel)]="person.afiliado" required #ctrl="ngModel" name="filiado">
                   <mat-radio-button value="1">
@@ -201,12 +205,14 @@
                 que seja estritamente necessário ao bom funcionamento da entidade sindical.
               </div>
             </mat-checkbox>
+            <span style="font-size: 10px; color:#a94442;">Todos os campos com * devem ser preenchidos para prosseguir.</span>
           </mat-card-content>
           <mat-card-actions class="actionsFuncionais">
             <button mat-button type="button" (click)="showDadosPessoais()">Voltar</button>
-            <button type="button" mat-button (click)="showSenha()">Próximo</button>
+            <button type="button" mat-button [disabled]="!dadosFuncionaisForm.form.valid" (click)="showSenha()">Próximo</button>
           </mat-card-actions>
         </mat-card>
+        </form>
       </div>
 
       <div [hidden]="formSenha">
@@ -261,7 +267,7 @@
 <div [hidden]="!submitted">
   <mat-card>
     <mat-card-content>
-      <div class="alerta sucesso">Seu cadastro está quase terminado. Um e-mail de confirmação foi enviado para {{ person.emailPessoal }}.</div>
+      <div class="alerta sucesso">Seu cadastro está quase terminado. Um e-mail de confirmação foi enviado para {{ person.emailInstitucional }}@tjpe.jus.br.</div>
     </mat-card-content>
   </mat-card>
 </div>
