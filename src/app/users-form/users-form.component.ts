@@ -46,6 +46,8 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   savePerson(captchaResponse: string) {
     this.isLoading = true;
     if (this.person.senha === this.confirmaSenha) {
+      this.person.emailInstitucional = this.person.emailInstitucional.toLowerCase();
+      this.person.emailPessoal = this.person.emailPessoal.toLowerCase();
       this.sub = this.usersService.save(captchaResponse, this.person).subscribe(
         r => {
           this.submitted = true
