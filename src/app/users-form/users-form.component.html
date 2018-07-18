@@ -22,7 +22,7 @@
               </div>
             </div>
             <mat-form-field>
-              <input matInput placeholder="RG" pattern="[0-9]+" maxlength="10" [(ngModel)]="person.rg" required #rg="ngModel" name="rg">
+              <input matInput placeholder="RG" pattern="[0-9]+" maxlength="20" [(ngModel)]="person.rg" required #rg="ngModel" name="rg">
             </mat-form-field>
             <div *ngIf="rg.invalid && (rg.dirty || rg.touched)" class="error">
               RG é obrigatório.
