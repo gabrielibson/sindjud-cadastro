@@ -26,9 +26,9 @@ html{
   flex-direction: column;
 }
 
-.example-container > * {
+/* .example-container > * {
   width: 100%;
-}
+} */
 
 .example-right-align {
   text-align: right;

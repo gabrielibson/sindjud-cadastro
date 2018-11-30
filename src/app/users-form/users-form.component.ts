@@ -13,12 +13,12 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 
   sub: any;
   person: Person;
-  people: Person[] = [];
   msgError: string;
   result: any;
   comarcas: Comarca;
   isLoading = false;
   erroBody: any;
+  matriculaPrompt: boolean = true;
 
   dadosPessoais = false;
   dadosFuncionais = true;
@@ -98,10 +98,20 @@ export class UsersFormComponent implements OnInit, OnDestroy {
   }
 
   consultarPessoa() {
-    if (this.person.cpf !== undefined && this.person.cpf !== "") {
-      this.usersService.get(this.person.cpf).subscribe(
+    this.isLoading = true;
+    if (this.person.matricula !== undefined && this.person.matricula !== "") {
+      this.usersService.get(this.person.matricula).subscribe(
         r => {
           this.msgError = "Pessoa já cadastrada!";
+          this.isLoading = false;
+        },
+        error =>{
+          if(error.status === 404){
+            this.matriculaPrompt = false;
+          }else{
+            this.msgError = "Sistema temporariamente indisponível";
+          }
+          this.isLoading = false;
         });
     }
   }

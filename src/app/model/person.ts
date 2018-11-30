@@ -2,8 +2,8 @@ import { Endereco } from "./endereco";
 export class Person {
     id: number;
     nome: string;
-    rg: string;
-    cpf: string;
+    /* rg: string;
+    cpf: string; */
     emailInstitucional: string;
     emailPessoal: string;
     sexo: string;

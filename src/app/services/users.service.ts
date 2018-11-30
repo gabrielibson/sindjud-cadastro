@@ -11,16 +11,16 @@ export class UsersService {
   baseUrl: string = environment.url;
   constructor(private http : Http) { }
 
-  getAll(): Observable<Person[]>{
+ /*  getAll(): Observable<Person[]>{
     let users$ = this.http
     .get(`${this.baseUrl}/users`, {headers: this.getHeaders()})
     .map(mapUsers);
     return users$;
-  }
+  } */
 
-  get(cpfPessoa: string) : Observable<Person>{
+  get(matricula: string) : Observable<Person>{
     let user$ = this.http
-    .get(`${this.baseUrl}/users/${cpfPessoa}`, {headers: this.getHeaders()})
+    .get(`${this.baseUrl}/users/${matricula}`, {headers: this.getHeaders()})
     .map(mapPerson);
     return user$;
   }
@@ -29,8 +29,8 @@ export class UsersService {
     return this.http.post(`${this.baseUrl}/users`, {recaptcha: captchaResponse, person}, {headers: this.getHeaders()})
   }
 
-  activateUser(cpf: string, code: string): Observable<Response>{
-    return this.http.get(`${this.baseUrl}/users/validarCodigoAcesso?cpfPessoa=${cpf}&codigoAcesso=${code}`);
+  activateUser(matricula: string, code: string): Observable<Response>{
+    return this.http.get(`${this.baseUrl}/users/validarCodigoAcesso?matricula=${matricula}&codigoAcesso=${code}`);
   }
 
   private getHeaders(){
@@ -40,20 +40,19 @@ export class UsersService {
   }
 }
 
-function mapUsers(response:Response): Person[]{
+/* function mapUsers(response:Response): Person[]{
   // The response of the API has a results
   // property with the actual results
   return response.json().map(toPerson)
-}
+} */
 
 function toPerson(r:any): Person{
   let person = <Person>({
-    cpf: r.cpf,
+    matricula: r.matricula,
     nome: r.nome,
     dataNascimento: r.dataNascimento,
     sexo: r.sexo
   });
-  console.log('Parsed person:', person);
   return person;
 }
 

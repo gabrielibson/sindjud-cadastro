@@ -1,5 +1,24 @@
 <div class="example-container">
-  <div [hidden]="submitted">
+  <mat-card *ngIf="matriculaPrompt">
+    <mat-card-header>
+      <mat-card-title>Cadastro</mat-card-title>
+      <mat-card-subtitle>insira sua matrícula</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Matrícula" maxlength="15" [(ngModel)]="person.matricula" required #matricula="ngModel" name="matricula">
+      </mat-form-field>
+      <div *ngIf="matricula.invalid && (matricula.dirty || matricula.touched)" class="error">
+        Matrícula é obrigatório.
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button style="float:right" mat-raised-button color="primary" (click)="consultarPessoa()" [disabled]="matricula.invalid || isLoading">Próximo
+        <mat-progress-spinner style=" margin-top: 8px; margin-left: 5px; float:right" [diameter]=20  *ngIf="isLoading"  mode="indeterminate"></mat-progress-spinner>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div [hidden]="submitted || matriculaPrompt">
     <form #personForm="ngForm" *ngIf="!msgError">
         <re-captcha size="invisible" #invisible (resolved)="response = $event && savePerson($event)"></re-captcha>
       <div [hidden]="dadosPessoais">
@@ -21,7 +40,7 @@
                 Nome deve possuir pelo menos 4 caracteres.
               </div>
             </div>
-            <mat-form-field>
+           <!--  <mat-form-field>
               <input matInput placeholder="RG" pattern="[0-9]+" maxlength="20" [(ngModel)]="person.rg" required #rg="ngModel" name="rg">
             </mat-form-field>
             <div *ngIf="rg.invalid && (rg.dirty || rg.touched)" class="error">
@@ -33,7 +52,7 @@
             </mat-form-field>
             <div *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" class="error">
               CPF é obrigatório. (Somente números).
-            </div>
+            </div> -->
             <mat-form-field>
               <input type="email" matInput placeholder="E-mail Pessoal" maxlength="50" [(ngModel)]="person.emailPessoal" required #email2="ngModel"
                 name="emailPessoal" email>
@@ -138,12 +157,6 @@
             </mat-form-field>
             <div *ngIf="email1.invalid && (email1.dirty || email1.touched)" class="error">
               Email Institucional é obrigatório.
-            </div>
-            <mat-form-field>
-              <input matInput placeholder="Matrícula" maxlength="15" [(ngModel)]="person.matricula" required #matricula="ngModel" name="matricula">
-            </mat-form-field>
-            <div *ngIf="matricula.invalid && (matricula.dirty || matricula.touched)" class="error">
-              Matrícula é obrigatório.
             </div>
             <mat-form-field>
               <mat-select placeholder="Comarca" [(ngModel)]="person.comarca" required #comarca="ngModel" name="comarca">

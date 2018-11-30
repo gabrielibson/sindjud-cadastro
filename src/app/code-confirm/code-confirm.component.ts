@@ -9,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class CodeConfirmComponent implements OnInit, OnDestroy {
   sub: any;
-  cpf: string;
+  matricula: string;
   code: string;
   submitted = false;
   msgError: string;
@@ -28,7 +28,7 @@ export class CodeConfirmComponent implements OnInit, OnDestroy {
   }
 
   validarCadastro(){
-    this.usersService.activateUser(this.cpf, this.code).subscribe(
+    this.usersService.activateUser(this.matricula, this.code).subscribe(
       r=> {
         this.submitted = true;
       },
